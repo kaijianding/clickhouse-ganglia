@@ -1,0 +1,27 @@
+modules {
+  module {
+    name = "clickhouse_metric"
+    language = "python"
+
+    param url {
+      value = 'http://localhost:8023'
+    }
+
+    param user {
+      value = 'default'
+    }
+
+    param password {
+      value = 'default'
+    }
+  }
+}
+
+collection_group {
+    collect_every  = 15
+    time_threshold = 180
+
+    metric {
+       name_match = "clickhouse_(.+)"
+    }
+}
